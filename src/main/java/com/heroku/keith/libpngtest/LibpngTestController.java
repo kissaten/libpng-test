@@ -18,7 +18,7 @@ import org.springframework.http.HttpStatus;
 @RestController
 public class LibpngTestController {
 
-	@RequestMapping("/test")
+	@RequestMapping("/")
 	public String test() {
 		BufferedImage img = new BufferedImage(BufferedImage.TYPE_INT_RGB, 10, 10);
 		Graphics2D g2d = img.createGraphics();
@@ -29,11 +29,11 @@ public class LibpngTestController {
 
 		return "All Good!!!";
 	}
-	
+
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(Exception.class)
 	@ResponseBody ErrorInfo
 	handleBadRequest(HttpServletRequest req, Exception ex) {
 	    return new ErrorInfo(req.getRequestURL(), ex);
-	} 
+	}
 }
